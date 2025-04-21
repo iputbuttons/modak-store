@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router'
 import { Pressable } from 'react-native'
-import { Back } from '../assets/icons/back'
+import Octicons from '@expo/vector-icons/Octicons'
+import { useTheme } from '../hooks/useTheme'
 
 type BackButtonProps = {
   paddingHorizontal?: number
@@ -8,10 +9,11 @@ type BackButtonProps = {
 
 export const BackButton = ({ paddingHorizontal }: BackButtonProps) => {
   const { back } = useRouter()
+  const { colors } = useTheme()
 
   return (
     <Pressable onPress={back} style={{ paddingHorizontal }}>
-      <Back />
+      <Octicons name='arrow-left' size={24} color={colors.black} />
     </Pressable>
   )
 }
