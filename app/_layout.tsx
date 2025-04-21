@@ -1,33 +1,15 @@
-import { useFonts } from "expo-font"
-import { Stack } from "expo-router"
-import * as SplashScreen from "expo-splash-screen"
-import { StatusBar } from "expo-status-bar"
-import { useEffect } from "react"
-import "react-native-reanimated"
-import "../configs/tailwind.css"
-import { useCustomFonts } from "@/configs/fonts"
-
-SplashScreen.preventAutoHideAsync()
+import { Stack } from 'expo-router'
+import * as SplashScreen from 'expo-splash-screen'
+import { StatusBar } from 'expo-status-bar'
+import 'react-native-reanimated'
+import '../shared/configs/tailwind.css'
+import { Providers } from '@/shared/providers/providers'
 
 export default function RootLayout() {
-  const fontsLoaded = useCustomFonts()
-
-  useEffect(() => {
-    if (fontsLoaded) {
-      SplashScreen.hideAsync()
-    }
-  }, [fontsLoaded])
-
-  if (!fontsLoaded) {
-    return null
-  }
-
   return (
-    <>
-      <Stack>
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </>
+    <Providers>
+      <Stack screenOptions={{ headerShown: false }} />
+      <StatusBar style='auto' />
+    </Providers>
   )
 }

@@ -4,21 +4,21 @@
     "slug": "modak-store",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./shared/assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
       "icon": {
-        "dark": "./assets/images/ios-dark.png",
-        "light": "./assets/images/ios-light.png",
-        "tinted": "./assets/images/ios-tinted.png"
+        "dark": "./shared/assets/images/ios-dark.png",
+        "light": "./shared/assets/images/ios-light.png",
+        "tinted": "./shared/assets/images/ios-tinted.png"
       }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./shared/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
@@ -28,13 +28,13 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#ffffff",
-          "image": "./assets/images/splash-icon.png",
+          "image": "./shared/assets/images/splash-icon.png",
           "dark": {
-            "image": "./assets/images/splash-icon-dark.png",
+            "image": "./shared/assets/images/splash-icon-dark.png",
             "backgroundColor": "#000000"
           },
           "light": {
-            "image": "./assets/images/splash-icon-light.png",
+            "image": "./shared/assets/images/splash-icon-light.png",
             "backgroundColor": "#ffffff"
           },
           "imageWidth": 200,
