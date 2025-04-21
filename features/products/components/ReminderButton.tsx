@@ -4,12 +4,14 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { Product } from '../products.types'
 import { CalendarReminder } from '@/shared/modules/calendarReminder/CalendarReminder'
 import { Button } from '@/shared/components/button'
+import { useTheme } from '@/shared/hooks/useTheme'
 
 type ReminderButtonProps = {
   product: Product
 }
 
 export const ReminderButton = ({ product }: ReminderButtonProps) => {
+  const { colors } = useTheme()
   const [isDatePickerVisible, setDatePickerVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [isInExpo, setIsInExpo] = useState(false)
@@ -70,11 +72,20 @@ export const ReminderButton = ({ product }: ReminderButtonProps) => {
           : 'Add Purchase Reminder'}
       </Button>
       <DateTimePickerModal
+        buttonTextColorIOS={colors.green[600]}
+        customCancelButtonIOS={() => (
+          <Button variant='secondary'>Cancel</Button>
+        )}
+        customConfirmButtonIOS={() => (
+          <Button className='rounded-none' variant='primary'>
+            Confirm
+          </Button>
+        )}
         isVisible={isDatePickerVisible}
-        mode='datetime'
-        onConfirm={handleAddReminder}
-        onCancel={() => setDatePickerVisible(false)}
         minimumDate={new Date()}
+        mode='datetime'
+        onCancel={() => setDatePickerVisible(false)}
+        onConfirm={handleAddReminder}
       />
     </>
   )
