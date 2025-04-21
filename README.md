@@ -38,6 +38,64 @@ This architectural approach offers several advantages:
 - **Improved maintainability**: Changes to a feature affect only one directory
 - **Clear boundaries**: Dependencies between features are explicit and controlled
 
+### Feature Organization
+
+Each feature in the `features/` directory follows a consistent organization pattern:
+
+#### Feature Structure
+
+A feature typically includes these key files and directories:
+
+```
+feature-name/
+├── components/             # UI components specific to this feature
+│   ├── ComponentName.tsx   # Individual components
+│   └── ...
+├── icons/                  # Component icons used within the feature
+├── feature-name.api.ts     # API integration and data fetching
+├── feature-name.hooks.ts   # Custom hooks for the feature
+├── feature-name.types.ts   # TypeScript type definitions
+├── feature-name.utils.ts   # Utility functions
+├── feature-name.consts.ts  # Constants and static data
+└── feature-name.store.ts   # State management (using Zustand)
+```
+
+#### File Purpose and Content
+
+- **components/**: Contains React components specific to the feature
+  - Each component should have a single responsibility
+  - Complex features may have nested component directories
+- **feature-name.api.ts**: Handles all API calls related to the feature
+  - Defines functions for fetching data from backend services
+  - Encapsulates API endpoints and response handling
+- **feature-name.hooks.ts**: Custom React hooks for the feature
+  - Typically uses React Query for data fetching
+  - Provides reusable logic for components
+- **feature-name.types.ts**: TypeScript type definitions
+  - Defines interfaces and types for the feature's data models
+  - Ensures type safety across the feature
+- **feature-name.utils.ts**: Utility functions for data manipulation
+  - Pure functions with no side effects
+  - Examples: data formatting, sorting, filtering
+- **feature-name.consts.ts**: Constants used throughout the feature
+  - Default values, configuration options, static data
+  - Shared values that don't change frequently
+- **feature-name.store.ts**: State management for the feature
+  - Uses Zustand for client-side state management
+  - Handles UI state that needs to persist across components
+
+#### Example
+
+- **Products Feature**:
+
+  - `products.api.ts`: Functions to fetch products from the API
+  - `products.hooks.tsx`: Custom hooks for product data fetching and caching
+  - `products.types.ts`: Defines the Product interface and related types
+  - `products.utils.ts`: Functions for sorting, filtering, and formatting products
+  - `products.consts.ts`: Default values and skeleton data for loading states
+  - `products.store.ts`: Zustand store for sorting preferences
+  - `components/`: Product-specific UI components like ProductCard, ProductList
+
 ### File Organization
 
 Each feature follows a consistent file organization pattern that maintains clear separation of concerns:
@@ -88,3 +146,5 @@ The app is built using:
 - **TypeScript**: For type-safe development
 - **TailwindCSS/NativeWind**: For styling components
 - **React Query**: For server state management, caching, and data fetching
+- **Zustand**: For client-state management including sort preferences
+- **Animated API**: For smooth animations and transitions
