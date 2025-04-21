@@ -14,15 +14,28 @@ export const Button = ({
   ...pressableProps
 }: ButtonProps) => {
   const variants = {
-    icon: 'flex-row gap-2 items-center',
-    primary: `bg-green-600 px-12 py-4 rounded-lg items-center justify-center text-white w-full ${className}`,
-    secondary: `bg-gray-300 px-12 py-4 rounded-lg items-center justify-center text-gray-600 w-full ${className}`,
+    icon: {
+      pressable: 'flex-row gap-2 items-center}',
+      text: '',
+    },
+    primary: {
+      pressable: `bg-green-600 px-12 py-4 rounded-lg items-center justify-center w-full ${className}`,
+      text: 'text-white',
+    },
+    secondary: {
+      pressable: `bg-white px-12 py-4 rounded-lg items-center justify-center w-full ${className}`,
+      text: 'text-black',
+    },
   }
 
   return (
-    <Pressable {...pressableProps} className={variants[variant]}>
+    <Pressable {...pressableProps} className={variants[variant].pressable}>
       {typeof children === 'string' ? (
-        <Text className='font-product-sans-bold text-lg'>{children}</Text>
+        <Text
+          className={`font-product-sans-bold text-lg ${variants[variant].text}`}
+        >
+          {children}
+        </Text>
       ) : (
         children
       )}

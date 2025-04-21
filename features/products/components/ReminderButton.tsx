@@ -73,19 +73,23 @@ export const ReminderButton = ({ product }: ReminderButtonProps) => {
       </Button>
       <DateTimePickerModal
         buttonTextColorIOS={colors.green[600]}
-        customCancelButtonIOS={() => (
-          <Button variant='secondary'>Cancel</Button>
+        customCancelButtonIOS={(props) => (
+          <Button variant='secondary' {...props}>
+            Cancel
+          </Button>
         )}
-        customConfirmButtonIOS={() => (
-          <Button className='rounded-none' variant='primary'>
+        customConfirmButtonIOS={(props) => (
+          <Button className='rounded-none' variant='primary' {...props}>
             Confirm
           </Button>
         )}
+        isDarkModeEnabled={false}
         isVisible={isDatePickerVisible}
         minimumDate={new Date()}
         mode='datetime'
         onCancel={() => setDatePickerVisible(false)}
         onConfirm={handleAddReminder}
+        themeVariant='light'
       />
     </>
   )
