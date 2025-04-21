@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import { Pressable } from 'react-native'
-import { Filter } from '../icons/filter'
+import { Text } from 'react-native'
 import { SortModal } from '../../products/components/SortModal'
 import { SortOption, SortOrder } from '../../products/products.types'
 import { useProductsStore } from '@/features/products/products.store'
+import Octicons from '@expo/vector-icons/Octicons'
+import { useTheme } from '@/shared/hooks/useTheme'
+import { Button } from '@/shared/components/button'
 
 export const FilterCategoryButton = () => {
+  const { colors } = useTheme()
   const [isModalVisible, setIsModalVisible] = useState(false)
   const { sortOption, sortOrder, setSortOption, setSortOrder } =
     useProductsStore()
@@ -17,10 +20,10 @@ export const FilterCategoryButton = () => {
 
   return (
     <>
-      <Pressable onPress={() => setIsModalVisible(true)}>
-        <Filter />
-      </Pressable>
-
+      <Button onPress={() => setIsModalVisible(true)} variant='icon'>
+        <Octicons name='sort-desc' size={24} color={colors.black} />
+        <Text className='font-product-sans-bold text-xl'>Sort</Text>
+      </Button>
       <SortModal
         isVisible={isModalVisible}
         onClose={() => setIsModalVisible(false)}

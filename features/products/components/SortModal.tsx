@@ -3,6 +3,8 @@ import { Modal, Pressable, Text, View, Animated } from 'react-native'
 import { SortOption, SortOrder } from '../products.types'
 import { Button } from '@/shared/components/button'
 import { SORT_OPTIONS } from '../products.consts'
+import Octicons from '@expo/vector-icons/Octicons'
+import { useTheme } from '@/shared/hooks/useTheme'
 
 type SortModalProps = {
   isVisible: boolean
@@ -19,6 +21,7 @@ export const SortModal = ({
   currentSortOption = 'none',
   currentSortOrder = 'asc',
 }: SortModalProps) => {
+  const { colors } = useTheme()
   const [selectedOption, setSelectedOption] =
     useState<SortOption['value']>(currentSortOption)
   const [selectedOrder, setSelectedOrder] =
@@ -88,13 +91,14 @@ export const SortModal = ({
           }}
           className='bg-white p-6 rounded-t-3xl'
         >
-          <View className='flex-row justify-between items-center mb-6'>
-            <Text className='font-product-sans-bold text-xl'>
+          <View className='flex-row items-center justify-between mb-6'>
+            <Text className='font-product-sans-bold text-2xl'>
               Sort Products
             </Text>
-            <Pressable onPress={handleClose}>
-              <Text className='font-product-sans text-gray-500'>Close</Text>
-            </Pressable>
+            <Button variant='icon' onPress={handleClose}>
+              <Octicons name='x' size={24} color={colors.black} />
+              <Text className='font-product-sans-bold text-xl'>Close</Text>
+            </Button>
           </View>
           <View className='mb-6'>
             <Text className='font-product-sans-bold text-lg mb-2'>Sort by</Text>
@@ -152,7 +156,9 @@ export const SortModal = ({
               </View>
             </View>
           )}
-          <Button onPress={handleApply}>Apply</Button>
+          <Button onPress={handleApply} variant='primary'>
+            Apply
+          </Button>
         </Animated.View>
       </View>
     </Modal>

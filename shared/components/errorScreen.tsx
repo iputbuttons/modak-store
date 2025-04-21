@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, Text, View } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import { Report } from '../assets/icons/report'
 import { Button } from './button'
 
@@ -20,7 +20,9 @@ export const ErrorScreen = ({ error, retry }: ErrorProps) => {
         <Text className='font-product-sans text-gray-600 text-center'>
           {error.message}
         </Text>
-        <Button onPress={retry}>Try again</Button>
+        <Button onPress={retry} variant='primary'>
+          Try again
+        </Button>
       </View>
     </ScrollView>
   )

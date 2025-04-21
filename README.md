@@ -22,7 +22,7 @@ This project follows the **Screaming Architecture** pattern, which organizes cod
 │   ├── hooks/       # Shared custom hooks
 │   ├── providers/   # Third-party library providers
 │   ├── assets/      # Static assets
-│   ├── configs/      # Global configurations
+│   ├── configs/     # Global configurations
 │   └── utils/       # Utility functions
 │
 └── [configuration files]
@@ -51,7 +51,6 @@ feature-name/
 ├── components/             # UI components specific to this feature
 │   ├── ComponentName.tsx   # Individual components
 │   └── ...
-├── icons/                  # Component icons used within the feature
 ├── feature-name.api.ts     # API integration and data fetching
 ├── feature-name.hooks.ts   # Custom hooks for the feature
 ├── feature-name.types.ts   # TypeScript type definitions
@@ -104,6 +103,23 @@ Each feature follows a consistent file organization pattern that maintains clear
 - Shared components and utilities are placed in the `shared` directory
 - Routing and layout concerns are handled in the `app` directory
 
+## Icons
+
+This project uses Octicons through `@expo/vector-icons` for all icon needs. Octicons is a scalable set of icons handcrafted by GitHub that provides clean, consistent icons for the application interface.
+
+### Usage
+
+```tsx
+import { Octicons } from '@expo/vector-icons'
+
+// In your component
+;<Octicons name='search' size={24} color='#000' />
+```
+
+Octicons are available in different sizes (12px, 16px, 24px, 48px, and 96px) to meet various UI requirements.
+
+For a complete list of available icons, visit [Primer Octicons](https://primer.style/octicons/).
+
 ## Get started
 
 1. Install dependencies
@@ -148,3 +164,4 @@ The app is built using:
 - **React Query**: For server state management, caching, and data fetching
 - **Zustand**: For client-state management including sort preferences
 - **Animated API**: For smooth animations and transitions
+- **@expo/vector-icons**: For icon system with Octicons

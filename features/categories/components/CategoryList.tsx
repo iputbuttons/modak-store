@@ -17,13 +17,12 @@ export const CategoryList = ({
   setSelectedCategory,
 }: CategoryListProps) => (
   <FlatList
-    contentContainerClassName='gap-4'
+    contentContainerClassName='gap-2'
     data={isLoading ? SKELETON_CATEGORIES : categories}
     horizontal
     keyExtractor={(category) => category.slug}
     renderItem={({ item }) => {
       const isSelected = item.slug === selectedCategory.slug
-
       return (
         <CategoryTag
           {...item}
@@ -34,5 +33,6 @@ export const CategoryList = ({
         />
       )
     }}
+    showsHorizontalScrollIndicator={false}
   />
 )
