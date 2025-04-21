@@ -1,5 +1,6 @@
 import { Pressable, ScrollView, Text, View } from 'react-native'
 import { Report } from '../assets/icons/report'
+import { Button } from './button'
 
 type ErrorProps = {
   error: Error
@@ -19,9 +20,7 @@ export const ErrorScreen = ({ error, retry }: ErrorProps) => {
         <Text className='font-product-sans text-gray-600 text-center'>
           {error.message}
         </Text>
-        <Pressable onPress={retry}>
-          <Text>Try again</Text>
-        </Pressable>
+        <Button onPress={retry}>Try again</Button>
       </View>
     </ScrollView>
   )
